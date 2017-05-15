@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body data-ng-app="AngularLab1">
+	<h1>Participant Info</h1>
+		
+	<div data-ng-controller="participantController">
+		<div>Participant ID: </div><input type="text" data-ng-model="ParticipantInfo.PID" id="txtParticipantID" /><br />
+		<div>Name: </div><input type="text" data-ng-model="ParticipantInfo.Name" id="txtName" /><br />
+		<div>Gender: </div><input type="text" data-ng-model="ParticipantInfo.Gender" id="txtGender" /><br />
+		<div>Age: </div><input type="text" data-ng-model="ParticipantInfo.Age" id="txtAge" /><br /><br />
+
+		<div><input type="button" data-ng-click="SaveParticipant();" value="Submit" />&nbsp;<input type="button" data-ng-click="GetTotalParticpants();" value="Get Count" /></div>
+	
+		<hr />
+		
+		<div>
+			<table border="1">
+				<tr>
+					<th>Participant ID</th>
+					<th>Name</th>
+					<th>Edit</th>
+				</tr>
+				<tr data-ng-repeat="oInfo in Participants">
+					<td>{{oInfo.PID}}</td>
+					<td data-ng-style="{'background-color':oInfo.Color}">{{oInfo.Name}}</td>
+					<td><a href="#" data-ng-click="FetchParticipantUsingFilterSvc(oInfo.PID)">Click Me</a></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+	
+</body>
+</html>
+
+<script src="../Scripts/angular.min.js"></script>
+<script type="text/javascript" src="../Scripts/app/app.js"></script>
+<script type="text/javascript" src="../Scripts/app/controllers/participantController.js"></script>
+<script type="text/javascript" src="../Scripts/app/services/participantFactory.js"></script>
